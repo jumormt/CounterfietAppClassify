@@ -1,6 +1,6 @@
 '''构建目录下文本词汇表
 
-构建目录下所有文件的文本词汇表，返回一个以文本名为键的map
+构建目录下所有文件的文本词汇表，返回一个以文本名为键的map,value为TextBean
 
 @author:chengxiao
 @version:1.0
@@ -36,7 +36,7 @@ def build_text(res, textbean, model=None):
         for st in sentences:
             li.append(st)
         textbean.sentences = li
-        res[textbean.file_name] = li
+        res[textbean.file_name] = textbean
     return res, model
 
 def build_vocab_all(dir_path):

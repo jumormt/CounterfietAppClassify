@@ -20,9 +20,9 @@ def calc_text_sim(res, file_name1, file_name2, model):
 
     s1 = []
     s2 = []
-    for i in sentence1:
+    for i in sentence1.sentences:
         s1.extend(i)
-    for i in sentence2:
+    for i in sentence2.sentences:
         s2.extend(i)
 
     return model.wv.n_similarity(s1, s2)
