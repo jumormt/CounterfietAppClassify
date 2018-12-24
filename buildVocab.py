@@ -2,6 +2,8 @@
 
 每一个特征分别建立对应的词汇表
 
+@author:chengxiao
+@version:1.0
 '''
 import warnings
 warnings.filterwarnings(action='ignore',category=UserWarning,module='gensim')

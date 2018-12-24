@@ -1,7 +1,9 @@
-'''计算相似度
+'''计算向量相似度
 
 计算两个向量文本的相似度
 
+@author:chengxiao
+@version:1.0
 '''
 import numpy as np
 import math
