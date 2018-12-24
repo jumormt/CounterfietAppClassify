@@ -1,0 +1,4 @@
+gensim
+numpy
+python-Levenshtein
+scipy
