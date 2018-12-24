@@ -3,6 +3,8 @@
 每一个特征分别建立对应的词汇表
 
 '''
+import warnings
+warnings.filterwarnings(action='ignore',category=UserWarning,module='gensim')
 from gensim.models import Word2Vec
 
 
