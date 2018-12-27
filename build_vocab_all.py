@@ -10,11 +10,36 @@ import warnings
 warnings.filterwarnings(action='ignore', category=UserWarning, module='gensim')
 from gensim.models.word2vec import LineSentence
 import os
+from sklearn.feature_extraction.text import TfidfVectorizer #TFIDF
+
 
 import build_vocab as bv
 import calc_sim as cs
 import calc_textsim as cts
 from TextBean import TextBean
+
+def add_TFIDF_map(textbean):
+    '''增加tfidf字段
+
+    给文本增加词权重字段
+
+    :param textbean: 该文本的bean
+    :return: 增加字段后的bean
+    '''
+    with open(textbean.file_path, 'r') as f:
+        lis = []
+        lis.append(f.read())
+        # TFIDF计算
+        tf_idf = TfidfVectorizer()  # 初始化对象
+        tf_data = tf_idf.fit_transform(lis)  # 计算TFIDF值
+        words = tf_idf.get_feature_names()  # 取出所统计单词项
+        TFIDF = dict()  # 创建空字典
+        for i in range(len(lis)):
+            for j in range(len(words)):
+
+                TFIDF[words[j]] = tf_data[i, j]
+        textbean.tfidf_map = TFIDF
+        return textbean
 
 def build_text(res, textbean, model=None):
     '''构建单个文本的文本词汇表
@@ -53,16 +78,16 @@ def build_vocab_all(dir_path):
         for file in filenames:
             fullpath = os.path.join(dirpath, file)
             tb = TextBean(file_name=file, file_path=fullpath)
+            tb = add_TFIDF_map(tb)
             files, model = build_text(files, tb, model)
     return files, model
 
 def main():
-    dirpath = 'resource/testdata'
+    dirpath = 'resource\\testdata_new'
     files, model = build_vocab_all(dirpath)
-    print(cts.calc_text_sim(files, 'testdata.txt', 'testdata2.txt', model))
+    # print(cts.calc_text_sim(files, 'testdata.txt', 'testdata2.txt', model))
+    print('end')
 
 
 if __name__ == '__main__':
     main()
-
-    print("end")

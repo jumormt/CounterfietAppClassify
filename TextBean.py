@@ -12,9 +12,10 @@ class TextBean(object):
         __sentences : 文本分词后的向量集合，e.g.[['first', 'sentence', '.'], ['second', 'sentence', '.']]
         __file_path : 文本相对路径
         __file_name : 文本文件名
+        __tfidf_map : 该文本各词所占权重
     '''
 
-    def __init__(self, file_name=None, sentences=None, file_path=None):
+    def __init__(self, file_name=None, sentences=None, file_path=None, tfidf_map = None):
         '''
         constructor
 
@@ -25,6 +26,7 @@ class TextBean(object):
         self.__sentences = sentences
         self.__file_path = file_path
         self.__file_name = file_name
+        self.__tfidf_map = tfidf_map
 
     @property
     def sentences(self):
@@ -61,3 +63,15 @@ class TextBean(object):
     @file_name.setter
     def file_name(self, value):
         self.__file_name = value
+
+    @property
+    def tfidf_map(self):
+        '''
+
+        :return:
+        '''
+        return self.__tfidf_map
+
+    @tfidf_map.setter
+    def tfidf_map(self, value):
+        self.__tfidf_map = value
