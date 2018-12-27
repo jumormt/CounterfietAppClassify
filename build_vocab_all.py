@@ -57,7 +57,7 @@ def build_vocab_all(dir_path):
     return files, model
 
 def main():
-    dirpath = 'testdata'
+    dirpath = 'resource/testdata'
     files, model = build_vocab_all(dirpath)
     print(cts.calc_text_sim(files, 'testdata.txt', 'testdata2.txt', model))
 
