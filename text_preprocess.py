@@ -109,7 +109,19 @@ def text_preprocess(file_path, outfile_path):
                 f.write(str(' '))
         return word_lemmatized_stemmered
 
+def text_preprocess_all(dir_path):
+    for dirpath, dirnames, filenames in os.walk(dir_path):
+        output_dir = dirpath + '_new'
+        os.mkdir(output_dir)
+        for file in filenames:
+            fullpath = os.path.join(dirpath, file)
+            out_filepath = os.path.join(output_dir, file)
+            text_preprocess(fullpath, out_filepath)
+
+
 if __name__ == '__main__':
-    filepath = 'resource\\testdata\\testdata3'
-    out_filepath = 'resource\\testdata\\testdata3_tmp2'
-    text_preprocess(filepath, out_filepath)
+    # filepath = 'resource\\testdata\\testdata3'
+    # out_filepath = 'resource\\testdata\\testdata3_tmp2'
+    # text_preprocess(filepath, out_filepath)
+    dir = 'resource\\testdata'
+    text_preprocess_all(dir)
