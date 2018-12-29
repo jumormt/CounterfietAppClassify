@@ -12,11 +12,8 @@ from gensim.models.word2vec import LineSentence
 import os
 from sklearn.feature_extraction.text import TfidfVectorizer #TFIDF
 
-
-import build_vocab as bv
-import calc_sim as cs
-import calc_textsim as cts
-from TextBean import TextBean
+from common import build_vocab as bv
+from text_analysis.TextBean import TextBean
 
 def add_TFIDF_map(textbean):
     '''增加tfidf字段
@@ -86,7 +83,7 @@ def build_vocab_all(dir_path):
     return files, model
 
 def main():
-    dirpath = 'resource\\testdata_new'
+    dirpath = '..\\resource\\testdata_new'
     files, model = build_vocab_all(dirpath)
     # print(cts.calc_text_sim(files, 'testdata.txt', 'testdata2.txt', model))
     print('end')

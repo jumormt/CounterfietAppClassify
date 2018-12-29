@@ -8,7 +8,7 @@
 import os
 
 from sklearn.feature_extraction.text import TfidfVectorizer #TFIDF
-from text_preprocess import text_preprocess_all
+
 
 def TFIDF(word_lemmatized_stemmered_wordonly):
     # TFIDF计算
@@ -49,7 +49,7 @@ def TFIDF(word_lemmatized_stemmered_wordonly):
 if __name__ == '__main__':
     # dir = 'resource\\testdata'
     # text_preprocess_all(dir)
-    dirnew = 'resource\\testdata_new'
+    dirnew = '..\\resource\\testdata_new'
     for dirpath, dirnames, filenames in os.walk(dirnew):
 
         for file in filenames:

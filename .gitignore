@@ -3,5 +3,6 @@
 test.py
 pretest.py
 resource/*_new/
+resource/testdata*/
 resource/extractdata/
 resource/extractdata.rar

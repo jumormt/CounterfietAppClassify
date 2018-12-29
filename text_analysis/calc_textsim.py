@@ -5,7 +5,7 @@
 @author:chengxiao
 @version:1.0
 '''
-import calc_sim as cs
+from common import calc_sim as cs
 
 
 def list_add(mul1, list1, mul2, list2):
@@ -106,3 +106,28 @@ def calc_text_sim_old(res, file_name1, file_name2, model):
         s2.extend(i)
 
     return model.wv.n_similarity(s1, s2)
+
+def calc_str_sim(file_path1, file_path2):
+    '''
+    计算两个文件的编辑距离
+    :param file_path1:
+    :param file_path2:
+    :return: 两个文件字符串的相似度
+    '''
+
+    f1 = open(file_path1, 'r', encoding='utf-8')
+    f2 = open(file_path2, 'r', encoding='utf-8')
+    str1 = f1.read()
+    str2 = f2.read()
+    if len(str1) == 0:
+        f1.close()
+        f2.close()
+        return file_path1+' is empty'
+    if len(str2) == 0:
+        f1.close()
+        f2.close()
+        return file_path2+' is empty'
+    sim = cs.Edit_distance_str(str1, str2)['Similarity']
+    f1.close()
+    f2.close()
+    return sim

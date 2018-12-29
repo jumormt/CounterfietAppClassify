@@ -134,5 +134,5 @@ if __name__ == '__main__':
     # filepath = 'resource\\testdata\\testdata3'
     # out_filepath = 'resource\\testdata\\testdata3_tmp2'
     # text_preprocess(filepath, out_filepath)
-    dir = 'resource\\testdata'
+    dir = '..\\resource\\testdata'
     text_preprocess_all(dir)
