@@ -28,7 +28,10 @@ def add_TFIDF_map(textbean):
     '''
     with open(textbean.file_path, 'r') as f:
         lis = []
-        lis.append(f.read())
+        ff = f.read()
+        if not ff: # 文件为空
+            return textbean
+        lis.append(ff)
         # TFIDF计算
         tf_idf = TfidfVectorizer()  # 初始化对象
         tf_data = tf_idf.fit_transform(lis)  # 计算TFIDF值

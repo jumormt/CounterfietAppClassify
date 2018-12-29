@@ -32,11 +32,14 @@ def word_tokenize_stopwords_removal(text):
 
     # 分词，同时直接去掉所有带符号的词，如邮箱后缀、hyphen连词、缩写等
     words = [word for word in word_tokenize(text) if (str.isalpha(word) is not False)]
-    print('Words written.')
+    print('去掉所有带符号的词，如邮箱后缀、hyphen连词、缩写.')
+
+    words = [word for word in word_tokenize(text) if (word.encode( 'UTF-8' ).isalpha())]
+    print('去掉非英文')
 
     # 小写化后去停用词+去长度小于3的单词+去数字和包含符号的单词如 2-year
     word_stopped = [w.lower() for w in words if (w.lower() not in cachedStopWords and len(w) > 2 and str.isalpha(w) is not False)]
-    print('WordsStopped written.')
+    print('小写化后去停用词+去长度小于3的单词+去数字和包含符号的单词.')
 
     return word_stopped
 
@@ -96,7 +99,8 @@ def text_preprocess(file_path, outfile_path):
     '''
     # 进行词形还原和词干提取,并输出记录结果
     # 返回仅由空格分隔单词的纯文本，即一个string的list: wordLemmatizedStemmeredWordOnly
-    with open(file_path, 'r') as f:
+    with open(file_path, 'r', encoding='utf-8') as f:
+        print("---------------"+"start!processing"+file_path)
         text = f.read()
         stop_words = word_tokenize_stopwords_removal(text)
         pos_tags_words = word_pos_tags(stop_words)
@@ -107,6 +111,7 @@ def text_preprocess(file_path, outfile_path):
             for word in word_lemmatized_stemmered:
                 f.write(str(word))
                 f.write(str(' '))
+        print("---------------"+"done!processing"+file_path)
         return word_lemmatized_stemmered
 
 def text_preprocess_all(dir_path):
@@ -117,7 +122,8 @@ def text_preprocess_all(dir_path):
     '''
     for dirpath, dirnames, filenames in os.walk(dir_path):
         output_dir = dirpath + '_new'
-        os.mkdir(output_dir)
+        if not os.path.exists(output_dir):
+            os.mkdir(output_dir)
         for file in filenames:
             fullpath = os.path.join(dirpath, file)
             out_filepath = os.path.join(output_dir, file)

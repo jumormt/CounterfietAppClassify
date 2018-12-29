@@ -33,6 +33,10 @@ def calc_text_sim2(res, file_name1, file_name2, model):
     '''
     file1bean = res[file_name1]
     file2bean = res[file_name2]
+    if file1bean.tfidf_map == None:
+        return file_name1 + " is empty"
+    if file2bean.tfidf_map == None:
+        return file_name2 + " is empty"
 
     s1 = [0] * model.wv.vector_size
     s2 = [0] * model.wv.vector_size
