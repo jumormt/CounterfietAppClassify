@@ -1,6 +1,7 @@
 from text_analysis import build_vocab_all as bva, calc_textsim as cts
 import os
 from common import calc_sim as cs
+__author__ = 'chengxiao'
 
 def process(long_des_dir, short_des_dir):
     '''

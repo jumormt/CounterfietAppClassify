@@ -5,6 +5,7 @@
 @author:chengxiao
 @version:1.0
 '''
+__author__ = 'chengxiao'
 import os
 
 from sklearn.feature_extraction.text import TfidfVectorizer #TFIDF

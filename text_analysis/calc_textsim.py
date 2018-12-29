@@ -5,6 +5,7 @@
 @author:chengxiao
 @version:1.0
 '''
+__author__ = 'chengxiao'
 from common import calc_sim as cs
 
 

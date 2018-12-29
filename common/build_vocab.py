@@ -5,6 +5,7 @@
 @author:chengxiao
 @version:1.0
 '''
+__author__ = 'chengxiao'
 import warnings
 warnings.filterwarnings(action='ignore',category=UserWarning,module='gensim')
 from gensim.models import Word2Vec

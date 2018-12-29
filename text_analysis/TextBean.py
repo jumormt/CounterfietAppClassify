@@ -3,6 +3,7 @@
 @author:chengxiao
 @version:1.0
 '''
+__author__ = 'chengxiao'
 class TextBean(object):
     '''文本信息的封装
 

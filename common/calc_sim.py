@@ -5,6 +5,7 @@
 @author:chengxiao
 @version:1.0
 '''
+__author__ = 'chengxiao'
 import numpy as np
 import math
 
