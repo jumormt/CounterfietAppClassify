@@ -91,14 +91,18 @@ def calc_text_sim_old(res, file_name1, file_name2, model):
     :param model: 构建好的word2vec模型
     :return: 两个文本的相似度
     '''
-    sentence1 = res[file_name1]
-    sentence2 = res[file_name2]
+    file1bean = res[file_name1]
+    file2bean = res[file_name2]
+    if file1bean.tfidf_map == None:
+        return file_name1 + " is empty"
+    if file2bean.tfidf_map == None:
+        return file_name2 + " is empty"
 
     s1 = []
     s2 = []
-    for i in sentence1:
+    for i in file1bean.sentences:
         s1.extend(i)
-    for i in sentence2:
+    for i in file2bean.sentences:
         s2.extend(i)
 
     return model.wv.n_similarity(s1, s2)
