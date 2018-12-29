@@ -110,6 +110,11 @@ def text_preprocess(file_path, outfile_path):
         return word_lemmatized_stemmered
 
 def text_preprocess_all(dir_path):
+    '''
+    文件夹内文本预处理，处理后的文本放置在同级目录下新建_new文件夹下
+    :param dir_path:
+    :return:
+    '''
     for dirpath, dirnames, filenames in os.walk(dir_path):
         output_dir = dirpath + '_new'
         os.mkdir(output_dir)

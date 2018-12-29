@@ -1,4 +1,7 @@
 .vscode/*
 .idea/*
 test.py
+pretest.py
 resource/*_new/
+resource/extractdata/
+resource/extractdata.rar
