@@ -151,7 +151,7 @@ def read_result(sim_result='resource\\result\\text_sim.pkl'):
     :return:
     '''
     with open(sim_result, 'rb') as f:
-        result = pickle.load(sim_result)
+        result = pickle.load(f)
         print(result)
     return result
 
