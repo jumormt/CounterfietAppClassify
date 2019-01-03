@@ -46,9 +46,11 @@ def main():
     # test21 = [i[1] for i in test2]
     # sim2 = cs.Cosine(test1, test21)
 
-    lda = models.LdaModel(tfidfvectors, id2word=dictionary, num_topics=2)
-    ldavectprs = lda[tfidfvectors]# 同上
+    lda = models.LdaModel(doc_vectors, id2word=dictionary, num_topics=2)# doc_Vectors也可以替换为tfidf的
+    ldavectprs = lda[doc_vectors]# 同上
     index = similarities.MatrixSimilarity(ldavectprs)
+
+    print(lda.print_topics(2)) # topic-word
 
 
 
