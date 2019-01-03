@@ -22,8 +22,8 @@ def TFIDF(word_lemmatized_stemmered_wordonly):
 
             TFIDF[words[j]] = tf_data[i, j]
     return TFIDF
-    # path_TFIDF = 'resource\\testdata\\words_atheism_word_tokenize_Stopped_postag_lemmatized_stemmered_TFIDF2.txt'
-    # path_TFIDF_sorted = 'resource\\testdata\\words_atheism_word_tokenize_Stopped_postag_lemmatized_stemmered_TFIDF_sorted2.txt'
+    # path_TFIDF = 'resource\\learn_data\\words_atheism_word_tokenize_Stopped_postag_lemmatized_stemmered_TFIDF2.txt'
+    # path_TFIDF_sorted = 'resource\\learn_data\\words_atheism_word_tokenize_Stopped_postag_lemmatized_stemmered_TFIDF_sorted2.txt'
 
     # with open(path_TFIDF, 'w', encoding='utf-8') as f:
     #     # 向文件写入TFIDF值
@@ -48,7 +48,7 @@ def TFIDF(word_lemmatized_stemmered_wordonly):
 
 
 if __name__ == '__main__':
-    # dir = 'resource\\testdata'
+    # dir = 'resource\\learn_data'
     # text_preprocess_all(dir)
     dirnew = '..\\resource\\testdata_new'
     for dirpath, dirnames, filenames in os.walk(dirnew):

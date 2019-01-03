@@ -132,8 +132,8 @@ def text_preprocess_all(dir_path):
 
 
 if __name__ == '__main__':
-    # filepath = 'resource\\testdata\\testdata3'
-    # out_filepath = 'resource\\testdata\\testdata3_tmp2'
+    # filepath = 'resource\\learn_data\\testdata3'
+    # out_filepath = 'resource\\learn_data\\testdata3_tmp2'
     # text_preprocess(filepath, out_filepath)
-    dir = '..\\resource\\testdata'
+    dir = '..\\resource\\learn_data'
     text_preprocess_all(dir)
