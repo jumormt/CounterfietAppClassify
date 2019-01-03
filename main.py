@@ -128,7 +128,7 @@ def get_text_sim(long_des_dir_pickle, short_des_dir, output_text_res):
             for attr in dirdic:
                 simm = cts.calc_text_sim2(dirdic[attr]['files'], file1, file2, dirdic[attr]['model'])
                 result[reskey][attr] = simm
-                print(file1, ",", file2, "in", attr, " sim:", simm)
+                # print(file1, ",", file2, "in", attr, " sim:", simm)
             # 短文本的相似度
             for attr in attrs:
                 file1path = short_des_dir + attr + "\\" + file1
@@ -152,8 +152,55 @@ def read_result(sim_result='resource\\result\\text_sim.pkl'):
     '''
     with open(sim_result, 'rb') as f:
         result = pickle.load(f)
-        print(result)
+        # print(result)
     return result
+
+def is_number(s):
+    '''
+    判断s是否为数字
+    :param s:
+    :return:
+    '''
+    try:
+        float(s)
+        return True
+    except ValueError:
+        pass
+
+    try:
+        import unicodedata
+        unicodedata.numeric(s)
+        return True
+    except (TypeError, ValueError):
+        pass
+
+    return False
+
+def process_result(result_dic):
+    '''
+    处理结果
+    :param result_dic: {'text':v,'json':v}
+    :return:
+    '''
+    for resu in result_dic:
+        res = result_dic[resu] # {pair:{'long':v,'title':v}}
+        vaulist = []
+        for i in res:
+            v = res[i]
+            vaulist = list(v.keys())
+            break
+
+        for i in vaulist:
+            jsonr = dict()
+            for j in res:
+                if (is_number(res[j][i])):
+                    jsonr[j] = res[j][i]
+            jsonr = sorted(jsonr.items(), key=lambda di:di[1], reverse=True)
+            with open("resource\\result\\{}_sim.txt".format(i), 'a') as f:
+                for i in jsonr:
+                    f.write(str(i)+'\n')
+    return True
+
 
 def main():
     long_des_dir = 'resource\\testdata3_long\\'
@@ -163,8 +210,9 @@ def main():
     text_sim = 'resource\\result\\text_sim.pkl'
     json_sim = 'resource\\result\\json_sim.pkl'
 
-    text_result = get_text_sim(long_des_dir_pickle, short_des_dir, text_sim)
-    json_result = get_json_sim(json_dirpath, json_sim)
+    # write_textpre_pkl()
+    # text_result = get_text_sim(long_des_dir_pickle, short_des_dir, text_sim)
+    # json_result = get_json_sim(json_dirpath, json_sim)
 
 
 if __name__ == '__main__':
