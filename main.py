@@ -210,9 +210,10 @@ def main():
     text_sim = 'resource\\result\\text_sim.pkl'
     json_sim = 'resource\\result\\json_sim.pkl'
 
-    # write_textpre_pkl()
-    # text_result = get_text_sim(long_des_dir_pickle, short_des_dir, text_sim)
-    # json_result = get_json_sim(json_dirpath, json_sim)
+    write_textpre_pkl(dirpath=long_des_dir, output=long_des_dir_pickle)
+    text_result = get_text_sim(long_des_dir_pickle, short_des_dir, text_sim)
+    json_result = get_json_sim(json_dirpath, json_sim)
+    process_result({'text':text_result, 'json':json_result})
 
 
 if __name__ == '__main__':
