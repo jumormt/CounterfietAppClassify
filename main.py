@@ -107,7 +107,7 @@ def get_text_sim(long_des_dir_pickle, short_des_dir, output_text_res):
     pickle_file = open(long_des_dir_pickle, 'rb')
     dirdic = pickle.load(pickle_file)
     pickle_file.close()
-    texts = list(dirdic['files'].keys())
+    texts = list(dirdic['longdes']['files'].keys())
 
     result = dict()
 
@@ -210,10 +210,11 @@ def main():
     text_sim = 'resource\\result\\text_sim.pkl'
     json_sim = 'resource\\result\\json_sim.pkl'
 
-    write_textpre_pkl(dirpath=long_des_dir, output=long_des_dir_pickle)
+    # write_textpre_pkl(dirpath=long_des_dir, output=long_des_dir_pickle)
     text_result = get_text_sim(long_des_dir_pickle, short_des_dir, text_sim)
-    json_result = get_json_sim(json_dirpath, json_sim)
-    process_result({'text':text_result, 'json':json_result})
+    # json_result = get_json_sim(json_dirpath, json_sim)
+    # process_result({'text':text_result, 'json':json_result})
+    print("done")
 
 
 if __name__ == '__main__':
