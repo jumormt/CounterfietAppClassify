@@ -1,3 +1,4 @@
+# https://blog.csdn.net/john_xyz/article/details/79208564
 from gensim.test.utils import common_texts
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 # for i,doc in enumerate(common_texts):
